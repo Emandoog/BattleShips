@@ -8,23 +8,27 @@ public class Ship : MonoBehaviour
     public int rotation = 0;
     public int shipSize = 2;
     public float offset = 0.5f;
-    // Start is called before the first frame update
-    void Start()
-    {
-       // RotateShip();
+    public  int playerHp ;
+	public int enemyHp;
 
+	[SerializeField] GameObject body;
+	private CombatHandler combatHandler;
+	void Start()
+    {
+		combatHandler = CombatHandler.instance.GetComponent<CombatHandler>();
+		playerHp = shipSize;
+        enemyHp = shipSize;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
+	/// <summary>
+	/// Rotates active player ship 
+	/// </summary>
     public void RotateShip()
     {
 
      switch (rotation)
-        {
+     {
             case 0:
                 rotation = 1;
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x - offset, gameObject.transform.position.y, gameObject.transform.position.z - offset);
@@ -46,15 +50,64 @@ public class Ship : MonoBehaviour
 				gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 				break;
 
-
-
-
-
-
-
-		}
+	 }
     
-    
+
     
     }
+
+	/// <summary>
+	/// Makes the player ship take damage and sets the ship as dead if it takes too much damage
+	/// </summary>
+	public void PlayerShipTakeDamage() 
+	{
+		
+		playerHp--;
+		combatHandler.PlayerShipHitLog();
+		if (playerHp == 0)
+		{
+			combatHandler.PlayerShipDown(gameObject.name);
+		
+		
+		}
+	
+	
+	}
+	/// <summary>
+	/// Makes the enemy ship takee damage and sets the ship as dead if it takes too much damage
+	/// </summary>
+	public void EnemyShipTakeDamage()
+	{
+		
+		enemyHp--;
+		combatHandler.EnemyShipHitLog();
+		
+		if (enemyHp == 0)
+		{
+			combatHandler.EnemyShipShowDown(gameObject.name);
+			
+
+		}
+
+
+	}
+	/// <summary>
+	/// Hides the visual representation of player ships
+	/// </summary>
+	public void HideBody() 
+	{ 
+
+		body.SetActive(false);
+	
+
+	}
+	/// <summary>
+	/// Shows the visual representation of player ships
+	/// </summary>
+	public void ShowBody()
+	{
+
+		body.SetActive(true);
+
+	}
 }

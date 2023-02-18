@@ -18,17 +18,17 @@ public class GridSetUp : MonoBehaviour
 	[SerializeField] private GameObject tile;
 	[SerializeField] private GameObject parentObject;
    
-    public List<GameObject> tilesList = new List<GameObject>();
+  
 	public Dictionary<Vector2, GameObject> TileMap = new Dictionary<Vector2, GameObject>();
 	
 	void Start()
     {
         SetUpGrid();
-     
+		
 
 	}
     /// <summary>
-    /// Creates grid to play 
+    /// Creates grid to play on 
     /// </summary>
     private  void SetUpGrid()
     {

@@ -9,6 +9,7 @@ public class InputHandler : MonoBehaviour
 	[SerializeField] GameInputs gameInputs;
 	[SerializeField] BuildingHandler buildingHandler;
 	[SerializeField] GameHandler gameHandler;
+	[SerializeField] EnemyBuildSetUP enemyBuild;
 	private void Awake()
 	{
 		gameInputs = new GameInputs();
@@ -22,9 +23,10 @@ public class InputHandler : MonoBehaviour
 	private void OnEnable()
 	{
 		gameInputs.PlayerMap.Enable();
-		gameInputs.PlayerMap.LeftClick.started += gameHandler.GetComponent<GameHandler>().OnTileCliked;
+		gameInputs.PlayerMap.LeftClick.started += gameHandler.OnTileCliked;
 		gameInputs.PlayerMap.RotateShip.started += buildingHandler.RotateShip;
 		gameInputs.PlayerMap.Confirm.started += buildingHandler.ConfirmPlacment;
+		//gameInputs.PlayerMap.GenerateEnemyShip.started += enemyBuild.SetUpEnemyShips;
 
 
 	}
@@ -37,27 +39,27 @@ public class InputHandler : MonoBehaviour
 		}
 	
 	}
-
-	private void SelectAndBuildOnTile(InputAction.CallbackContext context)
+	public void DisableBuildInputs() 
 	{
-		if (context.started)
-		{
-			var temp = GameHandler.instance.GetComponent<GameHandler>().hoveredOverTile;
-			if (GameHandler.instance.GetComponent<GameHandler>().hoveredOverTile == null )
-			{
-				Debug.Log("Mouse if not hovering over any tile");
-				return;
-			}
 
-			GameHandler.instance.GetComponent<GameHandler>().selectedTile = temp;
-
-		
+		gameInputs.PlayerMap.RotateShip.started -= buildingHandler.RotateShip;
+		gameInputs.PlayerMap.Confirm.started -= buildingHandler.ConfirmPlacment;
 
 
-		}
-		
-	
-	
-	
 	}
+	public void EnableCombatInputs()
+	{
+		gameInputs.PlayerMap.TogglePlayerShipVisibility.started += buildingHandler.SetPlayerShipVisibility;
+
+	}
+	public void EndGame() 
+	{
+		
+		gameInputs.PlayerMap.TogglePlayerShipVisibility.started -= buildingHandler.SetPlayerShipVisibility;
+		gameInputs.PlayerMap.LeftClick.started -= gameHandler.OnTileCliked;
+
+		gameInputs.PlayerMap.Disable();
+	}
+
+
 }

@@ -53,6 +53,24 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GenerateEnemyShip"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2dfef67-70e3-431a-bc64-08e53897e7e5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TogglePlayerShipVisibility"",
+                    ""type"": ""Value"",
+                    ""id"": ""4b8b0aa6-6d9f-4dbe-9abc-cd16698c289e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -88,6 +106,28 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cea7d9b-dab9-4556-8572-10574d83bb61"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GenerateEnemyShip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07e430d8-26ef-466a-b7d5-e6490abfad76"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TogglePlayerShipVisibility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +139,8 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         m_PlayerMap_LeftClick = m_PlayerMap.FindAction("LeftClick", throwIfNotFound: true);
         m_PlayerMap_RotateShip = m_PlayerMap.FindAction("RotateShip", throwIfNotFound: true);
         m_PlayerMap_Confirm = m_PlayerMap.FindAction("Confirm", throwIfNotFound: true);
+        m_PlayerMap_GenerateEnemyShip = m_PlayerMap.FindAction("GenerateEnemyShip", throwIfNotFound: true);
+        m_PlayerMap_TogglePlayerShipVisibility = m_PlayerMap.FindAction("TogglePlayerShipVisibility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,6 +203,8 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_LeftClick;
     private readonly InputAction m_PlayerMap_RotateShip;
     private readonly InputAction m_PlayerMap_Confirm;
+    private readonly InputAction m_PlayerMap_GenerateEnemyShip;
+    private readonly InputAction m_PlayerMap_TogglePlayerShipVisibility;
     public struct PlayerMapActions
     {
         private @GameInputs m_Wrapper;
@@ -168,6 +212,8 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         public InputAction @LeftClick => m_Wrapper.m_PlayerMap_LeftClick;
         public InputAction @RotateShip => m_Wrapper.m_PlayerMap_RotateShip;
         public InputAction @Confirm => m_Wrapper.m_PlayerMap_Confirm;
+        public InputAction @GenerateEnemyShip => m_Wrapper.m_PlayerMap_GenerateEnemyShip;
+        public InputAction @TogglePlayerShipVisibility => m_Wrapper.m_PlayerMap_TogglePlayerShipVisibility;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +232,12 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @Confirm.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnConfirm;
                 @Confirm.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnConfirm;
                 @Confirm.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnConfirm;
+                @GenerateEnemyShip.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGenerateEnemyShip;
+                @GenerateEnemyShip.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGenerateEnemyShip;
+                @GenerateEnemyShip.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGenerateEnemyShip;
+                @TogglePlayerShipVisibility.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTogglePlayerShipVisibility;
+                @TogglePlayerShipVisibility.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTogglePlayerShipVisibility;
+                @TogglePlayerShipVisibility.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnTogglePlayerShipVisibility;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -199,6 +251,12 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @Confirm.started += instance.OnConfirm;
                 @Confirm.performed += instance.OnConfirm;
                 @Confirm.canceled += instance.OnConfirm;
+                @GenerateEnemyShip.started += instance.OnGenerateEnemyShip;
+                @GenerateEnemyShip.performed += instance.OnGenerateEnemyShip;
+                @GenerateEnemyShip.canceled += instance.OnGenerateEnemyShip;
+                @TogglePlayerShipVisibility.started += instance.OnTogglePlayerShipVisibility;
+                @TogglePlayerShipVisibility.performed += instance.OnTogglePlayerShipVisibility;
+                @TogglePlayerShipVisibility.canceled += instance.OnTogglePlayerShipVisibility;
             }
         }
     }
@@ -208,5 +266,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         void OnLeftClick(InputAction.CallbackContext context);
         void OnRotateShip(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
+        void OnGenerateEnemyShip(InputAction.CallbackContext context);
+        void OnTogglePlayerShipVisibility(InputAction.CallbackContext context);
     }
 }

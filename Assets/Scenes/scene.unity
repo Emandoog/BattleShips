@@ -5051,7 +5051,7 @@ MonoBehaviour:
   - {fileID: 955964836}
   - {fileID: 1270267641}
   gameUIHandler: {fileID: 1065814077}
-  showEnemyPostion: 1
+  showEnemyPostion: 0
   playerShipsHidden: 0
 --- !u!114 &1091724394
 MonoBehaviour:

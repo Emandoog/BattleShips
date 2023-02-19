@@ -2758,9 +2758,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'press F to hide player ships <b>
-
-'
+  m_text: "Press F to hide player ships \nPress on a tile to attack it.\nBlue means
+    its a miss, orage means its a hit "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2787,7 +2786,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.4
+  m_fontSize: 41.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2823,7 +2822,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 7.314789, y: 0, z: -81.67377, w: -47.523544}
+  m_margin: {x: -78.83275, y: 0, z: -81.67377, w: -64.57776}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5051,8 +5050,6 @@ MonoBehaviour:
   - {fileID: 2087747056}
   - {fileID: 955964836}
   - {fileID: 1270267641}
-  shipIndex: 0
-  shipIndexEnemy: 0
   gameUIHandler: {fileID: 1065814077}
   showEnemyPostion: 1
   playerShipsHidden: 0
@@ -5103,6 +5100,13 @@ MonoBehaviour:
   gameUIHandler: {fileID: 1065814079}
   gameHandler: {fileID: 1091724390}
   gridSetUp: {fileID: 1091724392}
+  waitTime: 1
+  ship2: 1
+  ship3: 2
+  ship4: 1
+  ship5: 1
+  isHunting: 1
+  isTargetting: 0
 --- !u!1001 &1114066279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9982,14 +9986,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Click on the board to select tiles to build on. </b>
-
-    Press R rotate
-    Ship.</b>
-
-    Press Enter to Confirm Ship placement.</b>
-
-'
+  m_text: "Click on the board to select tiles to build on. \nPress R rotate Ship.\nPress
+    Enter to Confirm Ship placement.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

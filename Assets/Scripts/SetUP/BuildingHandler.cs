@@ -9,9 +9,10 @@ public class BuildingHandler : MonoBehaviour
 {
 
 	[SerializeField] private List<GameObject> shipList = new List<GameObject>();
-	[SerializeField] private int shipIndex = 0;
-	[SerializeField] private int shipIndexEnemy = 0;
+	 private int shipIndex = 0;
+	 private int shipIndexEnemy = 0;
 	[SerializeField] private GameObject gameUIHandler;
+	[Tooltip("If true, will show enemy ship placement on the grid at the begging of combat")]
 	public bool showEnemyPostion = false;
 	public bool playerShipsHidden = false;
 
@@ -33,7 +34,7 @@ public class BuildingHandler : MonoBehaviour
 				if (!tileToPlaceShipOn.GetComponent<Tile>().isTakenByPlayer == false)
 				{
 					SetUIText("Tile is already taken");
-					Debug.Log("Tile is already taken");
+					//Debug.Log("Tile is already taken");
 					return;
 
 				}
@@ -66,7 +67,7 @@ public class BuildingHandler : MonoBehaviour
 				}
 
 				SetUIText("Ship placed");
-				Debug.Log("Ship placed");
+				//Debug.Log("Ship placed");
 
 			}
 		
@@ -113,7 +114,7 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 						SetUIText("Wrong placement");
-						Debug.Log("Wrong Placement");
+						//Debug.Log("Wrong Placement");
 						result = false;
 						return result; 
 					}
@@ -121,7 +122,7 @@ public class BuildingHandler : MonoBehaviour
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByPlayer)
 					{
 						SetUIText("Other tiles are already taken");
-						Debug.Log("Other tiles are already taken");
+						//Debug.Log("Other tiles are already taken");
 						result = false;
 						return result;
 
@@ -153,14 +154,14 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 						SetUIText("Wrong placement");
-						Debug.Log("WrongPlacement");
+						//Debug.Log("WrongPlacement");
 						return false;
 					}
 					//check if other tile is  already taken by player
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByPlayer)
 					{
 						SetUIText("Other tiles are already taken");
-						Debug.Log("Other tiles are already taken");
+						//Debug.Log("Other tiles are already taken");
 						return false;
 					}
 					//If we are confirming placement, add the tile to the list, 
@@ -189,14 +190,14 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 						SetUIText("Wrong placement");
-						Debug.Log("Wrong placement");
+						//Debug.Log("Wrong placement");
 						return false;
 					}
 					//check if other tile is  already taken by player
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByPlayer)
 					{
 						SetUIText("Other tiles are already taken");
-						Debug.Log("Other tiles are already taken");
+						//Debug.Log("Other tiles are already taken");
 						return false;
 					}
 					//If we are confirming placement, add the tile to the list, 
@@ -225,14 +226,14 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 						SetUIText("Wrong placement");
-						Debug.Log("WrongPlacement");
+						//Debug.Log("WrongPlacement");
 						return false;
 					}
 					//check if other tile is  already taken by player
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByPlayer)
 					{
-						SetUIText("Other Tiles are already taken");
-						Debug.Log("Other Tiles are already taken");
+						SetUIText("Other tiles are already taken");
+						//Debug.Log("Other Tiles are already taken");
 						return false;
 					}
 					//If we are confirming placement, add the tile to the list, 
@@ -289,7 +290,7 @@ public class BuildingHandler : MonoBehaviour
 				if (!tileToPlaceShipOn.GetComponent<Tile>().isTakenByPlayer == false)
 				{
 				
-					Debug.Log("Tile is already taken");
+					//Debug.Log("Tile is already taken");
 					return;
 
 				}
@@ -299,13 +300,13 @@ public class BuildingHandler : MonoBehaviour
 
 				}
 				SetUIText("Ship placed properly");
-				Debug.Log("Placement Confirmed Correctly");
+				//Debug.Log("Placement Confirmed Correctly");
 				if (shipIndex == shipList.Count -1) 
 				{
 
 					BuildingPhaseEnd();
 					SetUIText("Building phase ended");
-					Debug.Log("Building phase ended");
+					//Debug.Log("Building phase ended");
 					GameHandler.instance.GetComponent<GameHandler>().StopBuildingPhase(); 
 				
 					return;
@@ -329,7 +330,7 @@ public class BuildingHandler : MonoBehaviour
 
 		foreach (GameObject go in tilesToActivate)
 		{
-			Debug.Log("Tiles set as taken");
+			//Debug.Log("Tiles set as taken");
 			go.GetComponent<Tile>().isTakenByPlayer = true;
 			go.GetComponent<Tile>().playerShipStationed = shipList[shipIndex];
 
@@ -345,7 +346,7 @@ public class BuildingHandler : MonoBehaviour
 
 		foreach (GameObject go in tilesToActivate)
 		{
-			Debug.Log("Enemy Tiles set as taken");
+			//Debug.Log("Enemy Tiles set as taken");
 			if (showEnemyPostion)
 			{
 				RevealEnemyPosition(go);
@@ -359,7 +360,7 @@ public class BuildingHandler : MonoBehaviour
 	private void BuildingPhaseEnd()
 	{
 		SetUIText("Building phase ended");
-		Debug.Log("Building phase ended");
+		//Debug.Log("Building phase ended");
 		GameHandler.instance.GetComponent<GameHandler>().StopBuildingPhase();
 		
 	}
@@ -393,7 +394,7 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 						
-						Debug.Log("Enemy Wrong Placement");
+						//Debug.Log("Enemy Wrong Placement");
 						result = false;
 						return result;
 					}
@@ -401,7 +402,7 @@ public class BuildingHandler : MonoBehaviour
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByEnemy)
 					{
 						
-						Debug.Log(" Enemy Other tiles are already taken");
+						//Debug.Log(" Enemy Other tiles are already taken");
 						result = false;
 						return result;
 
@@ -428,7 +429,7 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 
-						Debug.Log("Enemy Wrong Placement");
+						//Debug.Log("Enemy Wrong Placement");
 						result = false;
 						return result;
 					}
@@ -436,7 +437,7 @@ public class BuildingHandler : MonoBehaviour
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByEnemy)
 					{
 
-						Debug.Log(" Enemy Other tiles are already taken");
+						//Debug.Log(" Enemy Other tiles are already taken");
 						result = false;
 						return result;
 
@@ -463,7 +464,7 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 
-						Debug.Log("Enemy Wrong Placement");
+						//Debug.Log("Enemy Wrong Placement");
 						result = false;
 						return result;
 					}
@@ -471,7 +472,7 @@ public class BuildingHandler : MonoBehaviour
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByEnemy)
 					{
 
-						Debug.Log(" Enemy Other tiles are already taken");
+						//Debug.Log(" Enemy Other tiles are already taken");
 						result = false;
 						return result;
 
@@ -498,7 +499,7 @@ public class BuildingHandler : MonoBehaviour
 					{
 
 
-						Debug.Log("Enemy Wrong Placement");
+						//Debug.Log("Enemy Wrong Placement");
 						result = false;
 						return result;
 					}
@@ -506,7 +507,7 @@ public class BuildingHandler : MonoBehaviour
 					if (GridSetUp.instance.GetTileFromDic(tileToCheck).GetComponent<Tile>().isTakenByEnemy)
 					{
 
-						Debug.Log(" Enemy Other tiles are already taken");
+						//Debug.Log(" Enemy Other tiles are already taken");
 						result = false;
 						return result;
 

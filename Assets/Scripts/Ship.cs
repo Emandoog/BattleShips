@@ -62,13 +62,14 @@ public class Ship : MonoBehaviour
 	public void PlayerShipTakeDamage() 
 	{
 		
+
 		playerHp--;
 		combatHandler.PlayerShipHitLog();
 		if (playerHp == 0)
 		{
 			combatHandler.PlayerShipDown(gameObject.name);
-		
-		
+			combatHandler.ShipDown(shipSize);
+
 		}
 	
 	
@@ -85,6 +86,7 @@ public class Ship : MonoBehaviour
 		if (enemyHp == 0)
 		{
 			combatHandler.EnemyShipShowDown(gameObject.name);
+
 			
 
 		}

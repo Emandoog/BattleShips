@@ -9,7 +9,6 @@ public class BuildingHandler : MonoBehaviour
 {
 
 	[SerializeField] private List<GameObject> shipList = new List<GameObject>();
-	[SerializeField] private List<GameObject> tilesTakenByPlayer = new List<GameObject>();
 	[SerializeField] private int shipIndex = 0;
 	[SerializeField] private int shipIndexEnemy = 0;
 	[SerializeField] private GameObject gameUIHandler;

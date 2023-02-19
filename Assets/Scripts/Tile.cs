@@ -83,7 +83,7 @@ public class Tile : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Checks if Player has ship placed on this tile, if yes sends a signal to it to take damage, sets the tile as hit by enemy
+	/// Checks if Player has ship placed on this tile, if yes sends a signal to it to take damage, sets the tile as hit by enemy returns true if it enemy ship is stationed on tile
 	/// </summary>
 	public bool  EnemyAttackTile()
 	{
@@ -118,7 +118,9 @@ public class Tile : MonoBehaviour
 
 	}
 
-	
+	/// <summary>
+	/// Sets tile based on hits on enemy ships
+	/// </summary>
 	public void SetEnemyBoard() 
 	{
 		rend.material.color = currentlSetColorBase;
@@ -144,6 +146,9 @@ public class Tile : MonoBehaviour
 			currentlSetColorBase = baseMaterial.color;
 		}
 	}
+	/// <summary>
+	/// Sets tile color based on hits on player ships
+	/// </summary>
 	public void SetPlayerBoard()
 	{
 		rend.material.color = currentlSetColorBase;

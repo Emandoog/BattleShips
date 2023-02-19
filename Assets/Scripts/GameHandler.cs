@@ -83,14 +83,14 @@ public class GameHandler : MonoBehaviour
 
 	public void PlayerWon()
 	{
-
+		inputHandler.EndGame();
 		gameUIHandler.GetComponent<GameUIHandler>().OnGameEnd("You Won");
 
 	}
 
 	public void PlayerLost()
 	{
-
+		inputHandler.EndGame();
 		gameUIHandler.GetComponent<GameUIHandler>().OnGameEnd("You Lost");
 
 	}

@@ -20,13 +20,7 @@ public class GameUIHandler : MonoBehaviour
     [SerializeField] private GameObject gameEndScreen;
 	
 
-	private bool playerTurn = true;
-
-	private void Start()
-	{
-        showPlayerBoardButton.onClick.AddListener(ChangeTableToPlayer);
-		showEnemyBoardButton.onClick.AddListener(ChangeTableToEnemy);
-	}
+	
 
 	public void SetBuildingLog(string textToSet)
     { 
@@ -41,10 +35,13 @@ public class GameUIHandler : MonoBehaviour
 		buttonPlayer.SetActive(true);
 		buttonEnemy.SetActive(true);
         turnDisplay.SetActive(true);
+		showPlayerBoardButton.onClick.AddListener(ChangeTableToPlayer);
+		showEnemyBoardButton.onClick.AddListener(ChangeTableToEnemy);
 
 	}
 	public void OnGameEnd(string endText)
 	{
+        Debug.Log("GameEnded");
 		gameEndScreen.SetActive(true);
         gameEndText.text = endText;
 	}
@@ -66,5 +63,5 @@ public class GameUIHandler : MonoBehaviour
 
         turnDisplayText.text = turn;
 
-}
+    }
 }

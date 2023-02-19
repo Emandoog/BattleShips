@@ -16,10 +16,7 @@ public class InputHandler : MonoBehaviour
 
 
 	}
-	private void Start()
-	{
-		
-	}
+	
 	private void OnEnable()
 	{
 		gameInputs.PlayerMap.Enable();

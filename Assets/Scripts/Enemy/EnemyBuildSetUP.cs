@@ -12,11 +12,6 @@ public class EnemyBuildSetUP : MonoBehaviour
 	public int shipsSpawned = 0; 
 	
 
-	//1take random point, check if its a valid position if yes  remove this point from list and place a ship there ,go to point 4.
-	//2if not rotate, check again (till full rotation or palced)
-	//3if fully rotated go back to step 1,  remove this point from list
-	//4check if all ships are palced, if no go next, if yes stop building 
-	//5if more ships need to be placed,  take another ship to step 1 
 	/// <summary>
 	/// Spawns enemy ships on the grid
 	/// </summary>

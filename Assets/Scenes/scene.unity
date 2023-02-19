@@ -4890,8 +4890,8 @@ MonoBehaviour:
   buttonEnemy: {fileID: 421877074}
   turnDisplay: {fileID: 1586903436}
   turnDisplayText: {fileID: 1225684137}
-  gameEndText: {fileID: 0}
-  gameEndScreen: {fileID: 0}
+  gameEndText: {fileID: 195276260}
+  gameEndScreen: {fileID: 1942925855}
 --- !u!1001 &1091635841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5051,7 +5051,6 @@ MonoBehaviour:
   - {fileID: 2087747056}
   - {fileID: 955964836}
   - {fileID: 1270267641}
-  tilesTakenByPlayer: []
   shipIndex: 0
   shipIndexEnemy: 0
   gameUIHandler: {fileID: 1065814077}
@@ -5102,7 +5101,8 @@ MonoBehaviour:
   playerShipsLeft: 5
   isPlayerTurn: 1
   gameUIHandler: {fileID: 1065814079}
-  gameHandler: {fileID: 0}
+  gameHandler: {fileID: 1091724390}
+  gridSetUp: {fileID: 1091724392}
 --- !u!1001 &1114066279
 PrefabInstance:
   m_ObjectHideFlags: 0
